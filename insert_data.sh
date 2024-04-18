@@ -24,8 +24,7 @@ if [ ! -f "$csv_file" ]; then
     exit 1
 fi
 
-# Prompt for the MySQL table name
-read -p "Enter the MySQL table name: " table_name
+table_name=$(basename "$csv_file" .csv)
 
 # Importing data from CSV into MySQL table
 mysql --local-infile=1 -h "$host" -u "$username" -p"$password" "$database" <<EOF
